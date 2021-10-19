@@ -16,7 +16,7 @@ class CartItem extends React.Component{
     decreaseQuantity=()=>{
         this.setState((prevState)=>{
             if(prevState.qty==0)
-            return 0;
+                return ;
             return{
                 qty:prevState.qty-1
             }
