@@ -2,17 +2,6 @@ import React from "react";
 
 // class based component
 class CartItem extends React.Component{
-    constructor(){
-        // when inherited need to call super constructor
-        super();
-        this.state={
-            price:999,
-            title:'Phone',
-            qty: 1,
-            img: ''
-        }
-        // this.increaseQuantity=this.increaseQuantity.bind(this);----2nd method binding
-    }
     decreaseQuantity=()=>{
         this.setState((prevState)=>{
             if(prevState.qty==0)
@@ -38,7 +27,7 @@ class CartItem extends React.Component{
     }
     render(){
         // destructing
-        const {price,qty,title}=this.state;
+        const {price,qty,title}=this.props.product;
         return(
             <div className="cart-item">
                 <div className="left-block">
