@@ -1,7 +1,7 @@
 import React from "react";
 
 // class based component
-class CartItem extends React.Component{
+const CartItem=(props)=>{
     // decreaseQuantity=()=>{
     //     this.setState((prevState)=>{
     //         if(prevState.qty==0)
@@ -25,9 +25,8 @@ class CartItem extends React.Component{
     //         }
     //     )
     // }
-    render(){
         // destructing
-        const {price,qty,title}=this.props.product;
+        const {price,qty,title}=props.product;
         return(
             <div className="cart-item">
                 <div className="left-block">
@@ -39,15 +38,14 @@ class CartItem extends React.Component{
                     <div style={{color:'#777',fontSize:12}}>Qty: {qty}</div>
                     <div className="cart-item-actions">
                         {/* buttons */}
-                        <img alt="decrease" onClick={()=>this.props.onDecreaseQuantity(this.props.product)} src="https://cdn-icons-png.flaticon.com/512/992/992683.png" className="action-icons"/>
-                        <img alt="increase" onClick={()=>this.props.onIncreaseQuantity(this.props.product)} src="https://cdn-icons-png.flaticon.com/512/1828/1828926.png" className="action-icons"/>
+                        <img alt="decrease" onClick={()=>props.onDecreaseQuantity(props.product)} src="https://cdn-icons-png.flaticon.com/512/992/992683.png" className="action-icons"/>
+                        <img alt="increase" onClick={()=>props.onIncreaseQuantity(props.product)} src="https://cdn-icons-png.flaticon.com/512/1828/1828926.png" className="action-icons"/>
                         {/* <img alt="increase" onClick={this.increaseQuantity.bind(this)} src="https://cdn-icons-png.flaticon.com/512/1828/1828926.png" className="action-icons"/>             -----first method binding------ */}
-                        <img alt="delete" onClick={()=>this.props.onDeleteQuantity(this.props.product.id)} src="https://cdn-icons-png.flaticon.com/512/565/565491.png" className="action-icons"/>
+                        <img alt="delete" onClick={()=>props.onDeleteQuantity(props.product.id)} src="https://cdn-icons-png.flaticon.com/512/565/565491.png" className="action-icons"/>
                     </div>
                 </div>
             </div>
         )
-    }
 }
 const Styles={
     images:{
