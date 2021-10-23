@@ -55,8 +55,17 @@ class cart extends React.Component{
                     products
                 }
             )
+        }     
+    }
+    handleDeleteQuantity=(id)=>{
+        const {products}=this.state;
+        const items=products.filter((item)=>item.id!==id)
+        this.setState({
+            products:items
         }
             
+        )
+
     }
     render(){
         const {products}=this.state;
@@ -64,7 +73,7 @@ class cart extends React.Component{
             <div className="cart" >
             { 
                 products.map((product)=>{
-                    return <CartItem product={product} key={product.id} onIncreaseQuantity={this.handleIncreaseQuantity} onDecreaseQuantity={this.handleDecreaseQuantity}/>
+                    return <CartItem product={product} key={product.id} onIncreaseQuantity={this.handleIncreaseQuantity} onDecreaseQuantity={this.handleDecreaseQuantity} onDeleteQuantity={this.handleDeleteQuantity} />
                 })
             }
             </div>
