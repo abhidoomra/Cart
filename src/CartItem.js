@@ -18,12 +18,12 @@ const CartItem=(props)=>{
     //     // })
 
     //     setState form 2
-    //     this.setState((prevState)=>{
-    //             return{
-    //                 qty: prevState.qty+1
-    //             }
-    //         }
-    //     )
+        // this.setState((prevState)=>{
+        //         return{
+        //             qty: prevState.qty+1
+        //         }
+        //     }
+        // )
     // }
         // destructing
         const {price,qty,title}=props.product;
