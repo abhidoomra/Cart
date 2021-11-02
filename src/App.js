@@ -3,7 +3,7 @@ import Cart from "./Cart"
 import Navbar from "./Navbar";
 import db from "./firebase";
 import firebaseApp from "./firebase";
-import { getFirestore, collection, query, where, getDocs,setDoc,onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, query, where, getDocs,setDoc,onSnapshot,addDoc } from "firebase/firestore";
 class App extends React.Component {
   constructor(){
     // when inherited need to call super constructor
@@ -87,6 +87,21 @@ getTotal=()=>{
     })
     return price;
 }
+addProduct=()=>{
+    const docRef=addDoc(collection(db,'products'),{
+        title:'earphone',
+        qty:10,
+        price:330,
+        img:"http://cdn.shopify.com/s/files/1/1676/7297/products/1MainImage3_grande.jpg?v=1620280054"
+    })
+    .then((dref)=>{
+        console.log(dref.data());
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+    
+}
 componentDidMount(){
     onSnapshot(collection(db,"products"),(snapshot)=>{
         console.log(snapshot.docs.map(doc=>doc.data()));
@@ -108,6 +123,7 @@ render(){
   return (
     <div className="App">
       <Navbar count={this.getCartCount()}/>
+      <button style={{padding:20,fontSize:16}} onClick={this.addProduct}>Add product</button>
       <Cart 
       products={products} 
       onIncreaseQuantity={this.handleIncreaseQuantity} 
