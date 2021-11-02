@@ -3,7 +3,7 @@ import Cart from "./Cart"
 import Navbar from "./Navbar";
 import db from "./firebase";
 import firebaseApp from "./firebase";
-import { getFirestore,doc,updateDoc, collection, query, where, getDocs,setDoc,onSnapshot,addDoc } from "firebase/firestore";
+import { getFirestore,deleteDoc,doc,updateDoc, collection, query, where, getDocs,setDoc,onSnapshot,addDoc } from "firebase/firestore";
 class App extends React.Component {
   constructor(){
     // when inherited need to call super constructor
@@ -75,12 +75,14 @@ handleDecreaseQuantity=(product)=>{
 }
 handleDeleteQuantity=(id)=>{
     const {products}=this.state;
-    const items=products.filter((item)=>item.id!==id)
-    this.setState({
-        products:items
-    }
+    deleteDoc(doc(db,'products',id)).then(()=>console.log("deleted"))
+    .catch((err)=>console.log(err));
+    // const items=products.filter((item)=>item.id!==id)
+    // this.setState({
+    //     products:items
+    // }
         
-    )
+    // )
 
 }
 getCartCount=()=>{
